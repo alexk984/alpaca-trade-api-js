@@ -44,11 +44,7 @@ interface StockWebSocketSession {
 }
 export class AlpacaStocksClient extends Websocket {
   constructor(options: StockWebsocketOptions) {
-    const url: string =
-      "wss" +
-      options.url.substr(options.url.indexOf(":")) +
-      "/v2/" +
-      options.feed;
+    const url: string = options.url + "/v2/" + options.feed;
     options.url = url;
     options.subscriptions = {
       trades: [],
