@@ -5,11 +5,7 @@ const entityv2_1 = require("./entityv2");
 const websocket_1 = require("./websocket");
 class AlpacaStocksClient extends websocket_1.AlpacaWebsocket {
     constructor(options) {
-        const url = "wss" +
-            options.url.substr(options.url.indexOf(":")) +
-            "/v2/" +
-            options.feed;
-        options.url = url;
+        options.url = options.url + "/v2/" + options.feed;
         options.subscriptions = {
             trades: [],
             quotes: [],
