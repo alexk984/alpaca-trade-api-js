@@ -218,7 +218,9 @@ export abstract class AlpacaWebsocket
   }
 
   ping(): void {
-    this.conn.ping();
+    try {
+      this.conn.ping();
+    } catch {}
     this.session.pongTimeout = setTimeout(() => {
       this.log("no pong received from server, terminating...");
       this.conn.terminate();
