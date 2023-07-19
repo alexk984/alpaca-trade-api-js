@@ -156,7 +156,10 @@ class AlpacaWebsocket extends events_1.default.EventEmitter {
         }
     }
     ping() {
-        this.conn.ping();
+        try {
+            this.conn.ping();
+        }
+        catch (_a) { }
         this.session.pongTimeout = setTimeout(() => {
             this.log("no pong received from server, terminating...");
             this.conn.terminate();
